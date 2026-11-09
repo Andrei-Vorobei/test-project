@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from './app/hooks'
 import {
   createConversation,
@@ -17,6 +17,19 @@ function createId(): string {
   return crypto.randomUUID()
 }
 
+type Theme = 'light' | 'dark'
+
+const THEME_STORAGE_KEY = 'lom-ai-theme'
+
+function getInitialTheme(): Theme {
+  try {
+    return localStorage.getItem(THEME_STORAGE_KEY) === 'dark' ? 'dark' : 'light'
+  } catch (error) {
+    console.warn('Unable to load the selected theme.', error)
+    return 'light'
+  }
+}
+
 function App() {
   const dispatch = useAppDispatch()
   const {
@@ -27,6 +40,21 @@ function App() {
   } =
     useAppSelector((state) => state.chats)
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+  const [theme, setTheme] = useState<Theme>(getInitialTheme)
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme
+
+    try {
+      localStorage.setItem(THEME_STORAGE_KEY, theme)
+    } catch (error) {
+      console.warn('Unable to save the selected theme.', error)
+    }
+
+    return () => {
+      delete document.documentElement.dataset.theme
+    }
+  }, [theme])
 
   const activeConversation = conversations.find(
     ({ id }) => id === activeConversationId,
@@ -158,6 +186,16 @@ function App() {
               </p>
             </div>
           </div>
+          <button
+            aria-label={`Переключить на ${theme === 'light' ? 'тёмную' : 'светлую'} тему`}
+            aria-pressed={theme === 'dark'}
+            className="theme-toggle"
+            onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+            type="button"
+          >
+            <span aria-hidden="true">{theme === 'light' ? '☾' : '☀'}</span>
+            {theme === 'light' ? 'Тёмная' : 'Светлая'}
+          </button>
         </header>
 
         {persistenceWarning && (

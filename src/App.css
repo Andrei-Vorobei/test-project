@@ -274,6 +274,36 @@
   gap: 11px;
 }
 
+.theme-toggle {
+  display: inline-flex;
+  min-height: 34px;
+  align-items: center;
+  gap: 7px;
+  padding: 0 11px;
+  border: 1px solid var(--color-border);
+  border-radius: 9px;
+  color: var(--color-muted-strong);
+  background: var(--color-surface);
+  font-size: 11px;
+  cursor: pointer;
+  transition:
+    border-color 150ms ease,
+    color 150ms ease,
+    background 150ms ease;
+}
+
+.theme-toggle:hover {
+  border-color: var(--color-brand);
+  color: var(--color-brand);
+  background: var(--color-surface-muted);
+}
+
+.theme-toggle span {
+  color: var(--color-brand);
+  font-size: 15px;
+  line-height: 1;
+}
+
 .chat-header__avatar {
   width: 35px;
   height: 35px;
@@ -804,6 +834,10 @@
     flex: 1;
   }
 
+  .theme-toggle {
+    padding-inline: 9px;
+  }
+
   .chat-content {
     padding: 19px 16px 5px;
   }
@@ -893,4 +927,123 @@
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
   }
+}
+
+:root[data-theme='dark'] .new-chat-button:hover {
+  border-color: #5a4d75;
+  background: #302a3d;
+}
+
+:root[data-theme='dark'] .conversation-row:hover,
+:root[data-theme='dark'] .conversation-row:focus-within {
+  background: #2a2537;
+}
+
+:root[data-theme='dark'] .conversation-item__delete:hover {
+  color: #f09aa5;
+  background: #422b36;
+}
+
+:root[data-theme='dark'] .student-avatar {
+  color: #f2dfc8;
+  background: #4a382d;
+}
+
+:root[data-theme='dark'] .chat-panel {
+  background:
+    radial-gradient(ellipse at 50% 33%, rgb(56 45 87 / 28%), transparent 48%),
+    var(--color-canvas);
+}
+
+:root[data-theme='dark'] .chat-header {
+  background: rgb(36 33 48 / 82%);
+}
+
+:root[data-theme='dark'] .welcome__spark,
+:root[data-theme='dark'] .suggestion__icon {
+  border-color: #4b3f68;
+  background: #2b2540;
+}
+
+:root[data-theme='dark'] .suggestion,
+:root[data-theme='dark'] .tool-activity,
+:root[data-theme='dark'] .quick-prompts button {
+  background: rgb(36 33 48 / 82%);
+}
+
+:root[data-theme='dark'] .suggestion {
+  border-color: var(--color-border);
+}
+
+:root[data-theme='dark'] .suggestion:hover,
+:root[data-theme='dark'] .quick-prompts button:hover {
+  border-color: #66568f;
+}
+
+:root[data-theme='dark'] .suggestion__arrow {
+  color: #aaa1ba;
+}
+
+:root[data-theme='dark'] .message--user .message__content {
+  border-color: #403752;
+  background: #2b2540;
+}
+
+:root[data-theme='dark'] .tool-activity {
+  border-color: #40394e;
+}
+
+:root[data-theme='dark'] .typing-indicator span {
+  background: #a99acb;
+}
+
+:root[data-theme='dark'] .message-error p {
+  color: #f2a6a6;
+}
+
+:root[data-theme='dark'] .message-error button {
+  border-color: #5a3941;
+  color: #f0aaaa;
+  background: #38252d;
+}
+
+:root[data-theme='dark'] .message-error button:hover {
+  background: #462b35;
+}
+
+:root[data-theme='dark'] .composer {
+  border-color: #40394e;
+  background: #242130;
+  box-shadow:
+    0 4px 16px rgb(0 0 0 / 16%),
+    0 1px 3px rgb(0 0 0 / 12%);
+}
+
+:root[data-theme='dark'] .composer:focus-within {
+  border-color: #7965b7;
+  box-shadow:
+    0 0 0 3px rgb(154 124 240 / 18%),
+    0 4px 16px rgb(0 0 0 / 16%);
+}
+
+:root[data-theme='dark'] .composer textarea::placeholder {
+  color: #827a91;
+}
+
+:root[data-theme='dark'] .composer__send:disabled {
+  color: #777084;
+  background: #393443;
+}
+
+:root[data-theme='dark'] .composer-hint {
+  color: #938b9e;
+}
+
+:root[data-theme='dark'] .persistence-warning {
+  color: #f3d28b;
+  background: #44351f;
+}
+
+:root[data-theme='dark'] .mobile-menu-button {
+  background: var(--color-surface);
 }
