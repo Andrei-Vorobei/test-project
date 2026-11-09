@@ -41,5 +41,6 @@ Keep the README focused on setup, stack, application structure, chat state, mock
 - Phase 3 browser review passed in headless Edge at 1440px and 390px: calculator flow, errors and retry, long-input resizing, touch-visible deletion, deletion during generation, no horizontal overflow, and no uncaught JavaScript exceptions. Reduced-motion handling and the touch delete target were refined during review.
 - Vitest covers mock-agent scenarios, retry behavior, stale events, conversation deletion, and interrupted-response recovery.
 - `npm run build`, `npm run lint`, `npm test`, and `npm audit` pass.
+- [manual.md](../manual.md) is a detailed study guide of how the project works; keep it in sync with behaviour changes.
 - Next: prepare the requested short demo recording.
 - Update this checkpoint and the README after each completed implementation phase. Keep the README's AI-tools examples factual; record concrete reviewed or rejected suggestions rather than inventing examples.

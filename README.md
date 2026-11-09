@@ -17,6 +17,30 @@ npm run build
 npm test
 ```
 
+## Деплой на Netlify
+
+В репозитории есть [netlify.toml](./netlify.toml) с настройками сборки Vite:
+
+- команда сборки: `npm run build`;
+- опубликованная папка: `dist`;
+- версия Node.js: `22`;
+- fallback на `index.html` для маршрутов клиентского приложения.
+
+Чтобы включить автоматический деплой из GitHub:
+
+1. Отправьте репозиторий в GitHub.
+2. В Netlify выберите **Add new project → Import an existing project → GitHub**.
+3. Выберите этот репозиторий и разрешите Netlify доступ к нему.
+4. Проверьте настройки сборки и нажмите **Deploy**. Netlify автоматически прочитает `netlify.toml`.
+5. После этого каждый push в выбранную production-ветку будет запускать новую сборку и публикацию.
+
+Перед подключением можно проверить production-сборку локально:
+
+```bash
+npm run build
+npm run preview
+```
+
 ## Стек и структура
 
 - React 19, TypeScript, Vite.
